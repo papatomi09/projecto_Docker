@@ -1,67 +1,74 @@
 # projecto_Docker
 
-## 1. Instalacion ddependencias necesarias
+## 1. Instalación de dependencias necesarias
 
-Ya que en las maquinas virtuales que estamos usando estan practicamente 
-virgenes lo primero que tuvimos que hacer para poder realizar el 
-despliegue con kubernetes es instalar diferentes dependencias para poder
+Ya que en las máquinas virtuales que estamos usando están prácticamente 
+vírgenes, lo primero que tuvimos que hacer para poder realizar el 
+despliegue con Kubernetes es instalar diferentes dependencias.
 
 ### SPICE (opcional)
 
-para poder copiar y pegar comandos entre nuestra maquina host y la maquina
-virtual, instalamos el spice-vdagent
+Para poder copiar y pegar comandos entre nuestra máquina host y la máquina
+virtual, instalamos el `spice-vdagent`:
 
-$codigo$
+```bash
 sudo apt install spice-vdagent
 sudo systemctl enable --now spice-vdagentd
+```
 
-y para revisar si esta funcionando usamos
+Y para revisar si está funcionando usamos:
 
-$codigo$
+```bash
 systemctl status spice-vdagent
+```
 
-y si nos sale que esta en estado Active: active (running)
+Si el servicio está activo, debe mostrar: `Active: active (running)`.
 
 ### 1. Minikube
 
-Para poder levantar un cluster de manera local necesitamos instalar Minikube,
-con este comando lo instalamos:
+Para poder levantar un clúster de manera local necesitamos instalar Minikube. 
+Con este comando lo instalamos:
 
-$codigo$
+```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
 
-y para verificar la instalación:
+Y para verificar la instalación:
 
-$codigo$
+```bash
 minikube version
-
+```
 
 ### 2. Docker
 
-Tambien obviamente si tenemos que desplegar contenedores Docker necesitamos
-tener en nuestro sistema Docker instalado, para eso usamos este comando:
+También, si tenemos que desplegar contenedores Docker, necesitamos
+tener Docker instalado en el sistema. Para eso usamos este comando:
 
-$codigo$
+```bash
 sudo apt install docker.io -y
 sudo usermod -aG docker $USER
 newgrp docker
+```
 
-y ahora con el docker instalado ya podemos aplicar este comando para poder
-comenzar a trabajar con kubernetes:
+Ahora, con Docker instalado, ya podemos aplicar este comando para poder
+comenzar a trabajar con Kubernetes:
 
-$codigo$
+```bash
 minikube start --driver=docker
+```
 
+Esto demora unos minutos en montarse, así que no hay que preocuparse. 
+Una vez termine, probamos con el siguiente comando para verificar el montaje:
 
-Esto demora unos minutos en montarse asi que no hay que preocuparse, una vez
- termine probamos con el siguiente comando para verificar el montaje:
-
-$código$
+```bash
 kubectl get nodes
+```
 
+## 2. Creación de los archivos YAML
 
-## 2. Creación de los archivos.yaml
+(Contenido en desarrollo)
+
 
 Para poder realizar este projecto 
 
