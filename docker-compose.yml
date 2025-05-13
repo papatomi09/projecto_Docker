@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./app
+    container_name: mi_app_node
+    networks:
+      - mi_red
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: proxy_nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8888:80"
+    networks:
+      - mi_red
+    depends_on:
+      - app
+
+  redis:
+    image: redis:alpine
+    container_name: redis_service
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+    name: namespace_docker
