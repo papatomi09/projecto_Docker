@@ -65,12 +65,23 @@ Una vez termine, probamos con el siguiente comando para verificar el montaje:
 kubectl get nodes
 ```
 
-## 2. Creación de los archivos YAML
+## 2. Creación de los archivos YML
 
 (Contenido en desarrollo)
 
 
-Para poder realizar este projecto 
+Para poder realizar este projecto configuramos un docker-compose.yml para 
+que monte nuestros servicios ya definidos, para poder correr el proyecto se usa
+
+```bash
+docker-compose up --build
+```
+
+y para parar los contenedores usamos:
+
+```bash
+docker-compose down
+```
 
 
 
